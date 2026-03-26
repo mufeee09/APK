@@ -77,8 +77,7 @@ function App() {
             </div>
 
             <a
-              href="https://github.com/mufeee09/APK/releases/download/v1.1.1/Sirat_An-Nur_v1.1.1.apk"
-              
+              href="https://github.com/mufeee09/APK/releases/download/v1.1.2/Sirat_An-Nur_v1.1.2.apk"
               className="group block"
             >
               <button className="relative flex w-full items-center justify-center gap-2 overflow-hidden rounded-2xl bg-emerald-500 px-4 py-3 text-sm font-semibold text-emerald-950 shadow-[0_18px_45px_rgba(16,185,129,0.55)] transition hover:bg-emerald-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950 sm:text-base">
