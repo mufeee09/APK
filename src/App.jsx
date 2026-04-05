@@ -3,7 +3,7 @@ import './App.css'
 function App() {
   const screenshots = [
     { src: '/Image1.png', alt: 'App screenshot 1' },
-    { src: '/Image2.png', alt: 'App screenshot 2' },
+    { src: '/image7.png', alt: 'App screenshot 2' },
     { src: '/Image3.png', alt: 'App screenshot 3' },
     { src: '/Image4.png', alt: 'App screenshot 4' },
     { src: '/Image5.png', alt: 'App screenshot 5' },
@@ -32,7 +32,7 @@ function App() {
                     <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-60" />
                     <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-400" />
                   </span>
-                  New · v1.1.3 APK
+                  New · v1.1.4 APK
                 </p>
                 <h1 className="mt-3 text-balance text-3xl font-semibold tracking-tight text-slate-50 sm:text-4xl lg:text-5xl">
                   Sirat An-Nur
@@ -42,7 +42,7 @@ function App() {
                 <span className="inline-flex items-center gap-1.5 rounded-full bg-slate-900/70 px-3 py-1 text-xs font-medium text-slate-200 ring-1 ring-slate-700/80">
                   By
                   <span className="font-semibold text-slate-50">
-                    Mohamed Mufeed
+                    Team
                   </span>
                 </span>
                 <span className="h-1 w-1 rounded-full bg-slate-600" />
@@ -71,13 +71,13 @@ function App() {
                 </p>
               </div>
               <div className="flex flex-col items-end text-xs text-slate-400">
-                <span className="text-slate-300">Size · ~65 MB</span>
+                <span className="text-slate-300">Size · 67 MB</span>
                 <span>Min. Android 8.0+</span>
               </div>
             </div>
 
             <a
-              href="https://github.com/mufeee09/APK/releases/download/v1.1.3/Sirat_An-Nur_v1.1.3.apk"
+              href="https://github.com/mufeee09/APK/releases/download/v1.1.4/Sirat.An-Nur.apk"
               className="group block"
             >
               <button className="relative flex w-full items-center justify-center gap-2 overflow-hidden rounded-2xl bg-emerald-500 px-4 py-3 text-sm font-semibold text-emerald-950 shadow-[0_18px_45px_rgba(16,185,129,0.55)] transition hover:bg-emerald-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950 sm:text-base">
@@ -220,7 +220,7 @@ function App() {
         {/* Footer */}
         <footer className="mt-auto border-t border-slate-800/80 pt-4 text-[11px] text-slate-500 sm:text-xs">
           <div className="flex flex-col items-start justify-between gap-2 sm:flex-row sm:items-center">
-            <p>© {new Date().getFullYear()} Sirat An-Nur · Mohamed Mufeed</p>
+            <p>© {new Date().getFullYear()} Sirat An-Nur · Team </p>
             <p className="text-slate-600">
               This is a standalone APK landing page and not affiliated with
               Google Play.
