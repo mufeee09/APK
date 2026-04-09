@@ -32,7 +32,7 @@ function App() {
                     <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-60" />
                     <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-400" />
                   </span>
-                  New · v1.1.5 APK
+                  New · v1.1.6 APK
                 </p>
                 <h1 className="mt-3 text-balance text-3xl font-semibold tracking-tight text-slate-50 sm:text-4xl lg:text-5xl">
                   Sirat An-Nur
@@ -77,7 +77,7 @@ function App() {
             </div>
 
             <a
-              href="https://github.com/mufeee09/APK/releases/download/v1.1.5/Sirat.An-Nur.apk"
+              href="https://github.com/mufeee09/APK/releases/download/v1.1.6/Sirat-An-Nur.apk"
               className="group block"
             >
               <button className="relative flex w-full items-center justify-center gap-2 overflow-hidden rounded-2xl bg-emerald-500 px-4 py-3 text-sm font-semibold text-emerald-950 shadow-[0_18px_45px_rgba(16,185,129,0.55)] transition hover:bg-emerald-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950 sm:text-base">
