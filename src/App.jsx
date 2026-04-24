@@ -7,13 +7,13 @@ function App() {
   const [canScrollRight, setCanScrollRight] = useState(true)
 
   const screenshots = [
-    { src: '/Image1.png', alt: 'App screenshot 1' },
-    { src: '/image7.png', alt: 'App screenshot 2' },
-    { src: '/Image3.png', alt: 'App screenshot 3' },
-    { src: '/Image4.png', alt: 'App screenshot 4' },
-    { src: '/Image5.png', alt: 'App screenshot 5' },
-    { src: '/Image6.png', alt: 'App screenshot 6' },
-    // { src: '/image8.png', alt: 'App screenshot 8' },
+    { src: '/Image1.webp', alt: 'App screenshot 1' },
+    { src: '/image7.webp', alt: 'App screenshot 2' },
+    { src: '/Image3.webp', alt: 'App screenshot 3' },
+    { src: '/Image4.webp', alt: 'App screenshot 4' },
+    { src: '/Image5.webp', alt: 'App screenshot 5' },
+    { src: '/Image6.webp', alt: 'App screenshot 6' },
+    // { src: '/image8.webp', alt: 'App screenshot 8' },
   ]
 
   const checkScroll = () => {
