@@ -1,6 +1,11 @@
+import { useRef, useState, useEffect } from 'react'
 import './App.css'
 
 function App() {
+  const sliderRef = useRef(null)
+  const [canScrollLeft, setCanScrollLeft] = useState(false)
+  const [canScrollRight, setCanScrollRight] = useState(true)
+
   const screenshots = [
     { src: '/Image1.png', alt: 'App screenshot 1' },
     { src: '/image7.png', alt: 'App screenshot 2' },
@@ -8,94 +13,132 @@ function App() {
     { src: '/Image4.png', alt: 'App screenshot 4' },
     { src: '/Image5.png', alt: 'App screenshot 5' },
     { src: '/Image6.png', alt: 'App screenshot 6' },
+    // { src: '/image8.png', alt: 'App screenshot 8' },
   ]
+
+  const checkScroll = () => {
+    if (sliderRef.current) {
+      const { scrollLeft, scrollWidth, clientWidth } = sliderRef.current
+      setCanScrollLeft(scrollLeft > 5)
+      setCanScrollRight(scrollLeft < scrollWidth - clientWidth - 5)
+    }
+  }
+
+  useEffect(() => {
+    const slider = sliderRef.current
+    if (slider) {
+      checkScroll()
+      slider.addEventListener('scroll', checkScroll)
+      window.addEventListener('resize', checkScroll)
+      return () => {
+        slider.removeEventListener('scroll', checkScroll)
+        window.removeEventListener('resize', checkScroll)
+      }
+    }
+  }, [])
+
+  const scroll = (direction) => {
+    if (sliderRef.current) {
+      const scrollAmount = 300
+      sliderRef.current.scrollBy({
+        left: direction === 'left' ? -scrollAmount : scrollAmount,
+        behavior: 'smooth',
+      })
+    }
+  }
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 text-slate-100">
       <div className="mx-auto flex min-h-screen max-w-6xl flex-col px-4 py-8 sm:px-6 lg:px-8">
         {/* Hero */}
-        <header className="flex flex-col gap-8 pb-10 pt-4 lg:flex-row lg:items-center lg:justify-between">
-          <div className="flex flex-1 items-start gap-5">
-            <div className="relative h-24 w-24 shrink-0 overflow-hidden rounded-3xl border border-slate-700/60 bg-slate-900/70 shadow-[0_18px_45px_rgba(15,23,42,0.9)] sm:h-28 sm:w-28">
+        <header className="flex flex-col gap-10 pb-12 pt-6 lg:flex-row lg:items-center lg:justify-between">
+          <div className="flex flex-col items-center gap-6 text-center sm:flex-row sm:items-start sm:gap-8 sm:text-left">
+            <div className="relative h-28 w-28 shrink-0 overflow-hidden rounded-[2.2rem] border border-slate-700/60 bg-slate-900/70 shadow-[0_20px_50px_rgba(15,23,42,0.9)] sm:h-32 sm:w-32">
               <img
                 src="/app_icon.png"
                 alt="Sirat An-Nur app icon"
                 loading="lazy"
                 className="h-full w-full object-cover"
               />
-              <div className="pointer-events-none absolute inset-0 rounded-3xl border border-emerald-400/30 ring-1 ring-emerald-500/15" />
+              <div className="pointer-events-none absolute inset-0 rounded-[2.2rem] border border-emerald-400/30 ring-1 ring-emerald-500/15" />
             </div>
-            <div className="space-y-3">
-              <div>
-                <p className="inline-flex items-center gap-2 rounded-full border border-emerald-500/20 bg-emerald-500/10 px-3 py-1 text-xs font-medium tracking-wide text-emerald-200">
+
+            <div className="flex flex-col items-center space-y-4 sm:items-start">
+              <div className="space-y-1.5">
+                <p className="inline-flex items-center gap-2 rounded-full border border-emerald-500/20 bg-emerald-500/10 px-3 py-1 text-[11px] font-medium tracking-wide text-emerald-200">
                   <span className="relative inline-flex h-2 w-2">
                     <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-60" />
                     <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-400" />
                   </span>
-                  New · v1.1.7 APK
+                  NEW · v1.1.8 APK
                 </p>
-                <h1 className="mt-3 text-balance text-3xl font-semibold tracking-tight text-slate-50 sm:text-4xl lg:text-5xl">
+                <h1 className="text-balance text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl">
                   Sirat An-Nur
                 </h1>
               </div>
-              <div className="flex flex-wrap items-center gap-3 text-sm text-slate-300">
-                <span className="inline-flex items-center gap-1.5 rounded-full bg-slate-900/70 px-3 py-1 text-xs font-medium text-slate-200 ring-1 ring-slate-700/80">
-                  By
-                  <span className="font-semibold text-slate-50">
-                    Team
-                  </span>
+
+              <div className="flex flex-wrap items-center justify-center gap-3 sm:justify-start">
+                <span className="inline-flex items-center gap-1.5 rounded-full bg-slate-900/80 px-3 py-1.5 text-xs font-semibold text-slate-100 ring-1 ring-slate-700/80">
+                  By Team
                 </span>
-                <span className="h-1 w-1 rounded-full bg-slate-600" />
-                <span className="inline-flex items-center gap-1 text-xs sm:text-sm">
-                  <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
+                <span className="hidden h-1 w-1 rounded-full bg-slate-600 sm:block" />
+                <span className="inline-flex items-center gap-2 text-xs font-medium text-slate-300">
+                  <span className="h-2 w-2 rounded-full bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.6)]" />
                   Lifestyle · Spiritual Companion
                 </span>
               </div>
-              <p className="max-w-xl text-sm leading-relaxed text-slate-300 sm:text-base">
-                Your focused daily companion for Qur&apos;an, adhkar, duas, and
-                reminders — designed to help you stay connected to your Deen
-                with clarity and calm.
+
+              <p className="max-w-md text-sm leading-relaxed text-slate-400 sm:text-base">
+                Your focused daily companion for Qur&apos;an, dhikr, duas, and
+                reminders — designed to help you stay connected to your Deen.
               </p>
             </div>
           </div>
 
           {/* Install card */}
-          <div className="mt-4 w-full max-w-md rounded-3xl border border-slate-700/70 bg-slate-900/80 p-4 shadow-[0_20px_50px_rgba(15,23,42,0.85)] backdrop-blur lg:mt-0">
-            <div className="flex items-center justify-between gap-4 pb-3">
+          <div className="w-full max-w-sm self-center rounded-3xl border border-slate-700/70 bg-slate-900/60 p-5 shadow-[0_25px_60px_rgba(15,23,42,0.9)] backdrop-blur-md lg:w-auto lg:min-w-[320px]">
+            <div className="flex items-center justify-between gap-4 pb-4">
               <div className="space-y-1">
-                <p className="text-xs uppercase tracking-[0.16em] text-slate-400">
+                <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-500">
                   Android APK
                 </p>
-                <p className="text-sm font-medium text-slate-50">
-                  Direct & secure download
+                <p className="text-sm font-semibold text-slate-100">
+                  Direct Download
                 </p>
               </div>
-              <div className="flex flex-col items-end text-xs text-slate-400">
-                <span className="text-slate-300">Size · 68 MB</span>
-                <span>Min. Android 8.0+</span>
+              <div className="text-right text-[11px] text-slate-400">
+                <p className="font-medium text-slate-200">69 MB</p>
+                <p>v1.1.8</p>
               </div>
             </div>
 
             <a
-              href="https://github.com/mufeee09/APK/releases/download/v1.1.7/Sirat-An-Nur.apk"
+              href="https://github.com/mufeee09/APK/releases/download/v1.1.8/Sirat-An-Nur.apk"
               className="group block"
             >
-              <button className="relative flex w-full items-center justify-center gap-2 overflow-hidden rounded-2xl bg-emerald-500 px-4 py-3 text-sm font-semibold text-emerald-950 shadow-[0_18px_45px_rgba(16,185,129,0.55)] transition hover:bg-emerald-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950 sm:text-base">
-                <span className="pointer-events-none absolute inset-0 bg-gradient-to-r from-emerald-300/20 via-transparent to-emerald-500/25 opacity-0 transition group-hover:opacity-100" />
+              <button className="relative flex w-full items-center justify-center gap-3 overflow-hidden rounded-2xl bg-emerald-500 px-6 py-4 text-base font-bold text-emerald-950 shadow-[0_15px_40px_rgba(16,185,129,0.4)] transition-all hover:bg-emerald-400 hover:shadow-[0_20px_50px_rgba(16,185,129,0.5)] active:scale-[0.98]">
+                <span className="pointer-events-none absolute inset-0 bg-gradient-to-r from-white/20 via-transparent to-white/10 opacity-0 transition group-hover:opacity-100" />
                 <span className="relative flex items-center gap-2">
-                  <span className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-emerald-950/20 text-xs">
-                    ↓
-                  </span>
+                  <svg
+                    className="h-5 w-5 transition-transform group-hover:translate-y-0.5"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2.5}
+                      d="M4 16v1a2 2 0 002 2h12 a2 2 0 002-2v-1M7 10l5 5 5-5M12 3v12"
+                    />
+                  </svg>
                   Install APK
                 </span>
               </button>
             </a>
-
-            {/* <p className="mt-3 text-[11px] leading-relaxed text-slate-400">
-              By installing you agree to trust this APK outside of the Play
-              Store. Always verify the download source and keep your device
-              updated.
-            </p> */}
+            <p className="mt-4 text-center text-[11px] font-medium text-slate-500 lg:text-left">
+              Secure · Min. Android 8.0+
+            </p>
           </div>
         </header>
 
@@ -117,9 +160,55 @@ function App() {
               </span>
             </div>
 
-            <div className="relative rounded-3xl border border-slate-800/80 bg-slate-950/80 p-3 shadow-[0_16px_40px_rgba(15,23,42,0.9)]">
+            <div className="group relative rounded-3xl border border-slate-800/80 bg-slate-950/80 p-3 shadow-[0_16px_40px_rgba(15,23,42,0.9)]">
+              {/* Navigation Buttons */}
+              <button
+                onClick={() => scroll('left')}
+                disabled={!canScrollLeft}
+                className="absolute -left-2 top-1/2 z-20 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-slate-700/50 bg-slate-900/90 text-slate-300 shadow-xl backdrop-blur-sm transition-all hover:border-emerald-500/50 hover:text-emerald-400 hover:scale-110 active:scale-95 disabled:pointer-events-none disabled:opacity-0 sm:-left-5"
+                aria-label="Previous screenshot"
+              >
+                <svg
+                  className="h-6 w-6"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2.5}
+                    d="M15 19l-7-7 7-7"
+                  />
+                </svg>
+              </button>
+
+              <button
+                onClick={() => scroll('right')}
+                disabled={!canScrollRight}
+                className="absolute -right-2 top-1/2 z-20 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-slate-700/50 bg-slate-900/90 text-slate-300 shadow-xl backdrop-blur-sm transition-all hover:border-emerald-500/50 hover:text-emerald-400 hover:scale-110 active:scale-95 disabled:pointer-events-none disabled:opacity-0 sm:-right-5"
+                aria-label="Next screenshot"
+              >
+                <svg
+                  className="h-6 w-6"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2.5}
+                    d="M9 5l7 7-7 7"
+                  />
+                </svg>
+              </button>
+
               <div className="pointer-events-none absolute inset-x-10 top-0 h-16 rounded-b-full bg-gradient-to-b from-slate-950 to-transparent opacity-80" />
-              <div className="flex gap-3 overflow-x-auto pb-3 pt-1 [scrollbar-width:none] [-ms-overflow-style:none]">
+              <div
+                ref={sliderRef}
+                className="no-scrollbar flex gap-3 overflow-x-auto pb-3 pt-1"
+              >
                 <div className="flex gap-3">
                   {screenshots.map((shot) => (
                     <figure
@@ -140,6 +229,7 @@ function App() {
               <style>
                 {`
                   .no-scrollbar::-webkit-scrollbar { display: none; }
+                  .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
                 `}
               </style>
             </div>
@@ -159,7 +249,7 @@ function App() {
                 <li className="flex items-start gap-2 rounded-2xl bg-slate-900/70 p-3 ring-1 ring-slate-800/80">
                   <span className="mt-1 h-1.5 w-1.5 rounded-full bg-emerald-400" />
                   <div>
-                    <p className="font-medium">Daily adhkar & duas</p>
+                    <p className="font-medium">Daily dhikr & duas</p>
                     <p className="mt-1 text-xs text-slate-400">
                       Curated morning, evening, and situational remembrance to
                       keep your heart engaged.
