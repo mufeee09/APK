@@ -70,7 +70,7 @@ function App() {
                     <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-60" />
                     <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-400" />
                   </span>
-                  NEW · v1.1.8 APK
+                  NEW · v1.1.9 APK
                 </p>
                 <h1 className="text-balance text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl">
                   Sirat An-Nur
@@ -107,13 +107,13 @@ function App() {
                 </p>
               </div>
               <div className="text-right text-[11px] text-slate-400">
-                <p className="font-medium text-slate-200">69 MB</p>
-                <p>v1.1.8</p>
+                <p className="font-medium text-slate-200">72 MB</p>
+                <p>v1.1.9</p>
               </div>
             </div>
 
             <a
-              href="https://github.com/mufeee09/APK/releases/download/v1.1.8/Sirat-An-Nur.apk"
+              href="https://github.com/mufeee09/APK/releases/download/v1.1.9/Sirat-An-Nur.apk"
               className="group block"
             >
               <button className="relative flex w-full items-center justify-center gap-3 overflow-hidden rounded-2xl bg-emerald-500 px-6 py-4 text-base font-bold text-emerald-950 shadow-[0_15px_40px_rgba(16,185,129,0.4)] transition-all hover:bg-emerald-400 hover:shadow-[0_20px_50px_rgba(16,185,129,0.5)] active:scale-[0.98]">
