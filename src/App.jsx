@@ -113,7 +113,7 @@ function App() {
             </div>
 
             <a
-              href="https://github.com/mufeee09/APK/releases/download/v1.2.5/Sirat-An-Nur.apk"
+              href="https://github.com/mufeee09/APK/releases/download/v1.2.5/Sirat-An-Nur.apk" 
               className="group block"
             >
               
