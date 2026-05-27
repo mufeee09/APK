@@ -13,7 +13,7 @@ function App() {
     { src: '/Image4.webp', alt: 'App screenshot 4' },
     { src: '/Image5.webp', alt: 'App screenshot 5' },
     { src: '/Image6.webp', alt: 'App screenshot 6' },
-    // { src: '/image8.webp', alt: 'App screenshot 8' },
+    { src: '/image8.webp', alt: 'App screenshot 8' },
   ]
 
   const checkScroll = () => {
@@ -70,7 +70,7 @@ function App() {
                     <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-60" />
                     <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-400" />
                   </span>
-                  NEW · v1.3.0 APK
+                  NEW · v1.3.1 APK
                 </p>
                 <h1 className="text-balance text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl">
                   Sirat An-Nur
@@ -108,12 +108,12 @@ function App() {
               </div>
               <div className="text-right text-[11px] text-slate-400">
                 <p className="font-medium text-slate-200">94 MB</p>
-                <p>v1.3.0</p>
+                <p>v1.3.1</p>
               </div>
             </div>
 
             <a
-              href="https://github.com/mufeee09/APK/releases/download/v1.3.0/Sirat-An-Nur.apk" 
+              href="https://github.com/mufeee09/APK/releases/download/v1.3.1/Sirat-An-Nur.apk" 
               className="group block"
             >
               
